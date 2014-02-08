@@ -735,7 +735,7 @@ $.extend(DatetimeEntry.prototype, {
 	   @return  (string) the formatted date/time */
 	_formatDatetime: function(inst, format) {
 		var currentDatetime = '';
-		var ampm = format.indexOf('a') > -1;
+		var ampm = true; //format.indexOf('a') > -1;
 		for (var i = 0; i < format.length; i++) {
 			var field = format.charAt(i);
 			switch (field) {
