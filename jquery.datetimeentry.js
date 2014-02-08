@@ -714,7 +714,7 @@ $.extend(DatetimeEntry.prototype, {
 		year += (year >= 100 || datetimeFormat.indexOf('y') == -1 ? 0 :
 			(year > this._shortYearCutoff(inst) ? 1900 : 2000));
 		var fields = this._constrainTime(inst, [hour, minute, second]);
-		var date = new Date(year, Math.max(0, month - 1), day, fields[0], fields[1], fields[2]);
+		var date = new Date(year, Math.max(0, month), day, fields[0], fields[1], fields[2]);
 		if (datetimeFormat.match(/y|o|n|d|w/i) && (date.getFullYear() != year ||
 				date.getMonth() + 1 != month || date.getDate() != day)) {
 			throw 'Invalid date';
