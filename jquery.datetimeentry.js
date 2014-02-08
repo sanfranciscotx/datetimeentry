@@ -629,12 +629,12 @@ $.extend(DatetimeEntry.prototype, {
 		if (!value) {
 			return null;
 		}
-		var year = 0;
-		var month = 0;
-		var day = 0;
-		var hour = 0;
-		var minute = 0;
-		var second = 0;
+		var year = inst._selectedYear; //0;
+		var month = inst._selectedMonth; //0;
+		var day = inst._selectedDay; //0;
+		var hour = inst._selectedHour; //0;
+		var minute = inst._selectedMinute; //0;
+		var second = inst._selectedSecond; //0;
 		var index = 0;
 		var datetimeFormat = inst.options.datetimeFormat;
 		var skipNumber = function() {
@@ -642,6 +642,7 @@ $.extend(DatetimeEntry.prototype, {
 				index++;
 			}
 		};
+		/*
 		var i;
 		for (i = 0; i < datetimeFormat.length && index < value.length; i++) {
 			var field = datetimeFormat.charAt(i);
@@ -711,14 +712,17 @@ $.extend(DatetimeEntry.prototype, {
 		if (i < datetimeFormat.length) {
 			throw 'Invalid date';
 		}
+		*/
 		year += (year >= 100 || datetimeFormat.indexOf('y') == -1 ? 0 :
 			(year > this._shortYearCutoff(inst) ? 1900 : 2000));
-		var fields = this._constrainTime(inst, [hour, minute, second]);
+		var fields = [hour, minute, second]; //this._constrainTime(inst, [hour, minute, second]);
 		var date = new Date(year, Math.max(0, month), day, fields[0], fields[1], fields[2]);
+/*		
 		if (datetimeFormat.match(/y|o|n|d|w/i) && (date.getFullYear() != year ||
 				date.getMonth() + 1 != month || date.getDate() != day)) {
 			throw 'Invalid date';
 		}
+*/
 		return date;
 	},
 
