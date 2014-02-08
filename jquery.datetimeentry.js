@@ -757,8 +757,8 @@ $.extend(DatetimeEntry.prototype, {
 					break;
 				case 'w': case 'W':
 					currentDatetime += inst.options[field == 'W' ? 'dayNames' : 'dayNamesShort']
-						[new Date(inst._selectedYear, inst._selectedMonth, inst._selectedDay).getDay()] +
-						' ' + this._formatNumber(inst._selectedDay);
+						[new Date(inst._selectedYear, inst._selectedMonth, inst._selectedDay).getDay()];// +
+						//' ' + this._formatNumber(inst._selectedDay);
 					break;
 				case 'h': case 'H':
 					currentDatetime += this._formatNumber(!ampm ? inst._selectedHour :
